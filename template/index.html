@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dropout Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css')}}">
+    <!-- <link rel="stylesheet" href="../static/index.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="formValidation.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul class="navbar-item mx-2 mt-2">
+            <li><a href="">Student Dropout</a></li>
+        </ul>
+    </nav>
+
+
+    
+    <form action="{{url_for('predict')}}" method="POST" onsubmit="return validateForm()">
+
+
+        <label for="maritalStatus">Marital Status:</label>
+        <select id="maritalStatus" name="maritalStatus" required>
+            <option value="None" selected disabled hidden>--Marital Status--</option>
+            <option value="1">Single</option>
+            <option value="2">Married</option>
+            <option value="3">Widower</option>
+            <option value="4">Divorced</option>
+            <option value="5">Facto Union</option>
+            <option value="6">Legally Separated</option>
+        </select>
+        <br><br>
+
+        <label for="application_mode">Application Mode:</label>
+        <select id="application_mode" name="application_mode" required>
+            <option value="None" selected disabled hidden>--Select a Application Mode--</option>
+            <option value="1">1st phase - general contingent</option>
+            <option value="2">Ordinance No. 612/93</option>
+            <option value="5">1st phase - special contingent (Azores Island)</option>
+            <option value="7">Holders of other higher courses</option>
+            <option value="10">Ordinance No. 854-B/99</option>
+            <option value="15">International student (bachelor)</option>
+            <option value="16">1st phase - special contingent (Madeira Island)</option>
+            <option value="17">2nd phase - general contingent</option>
+            <option value="18">3rd phase - general contingent</option>
+            <option value="26">Ordinance No. 533-A/99, item b2) (Different Plan)</option>
+            <option value="27">Ordinance No. 533-A/99, item b3 (Other Institution)</option>
+            <option value="39">Over 23 years old</option>
+            <option value="42">Transfer</option>
+            <option value="43">Change of course</option>
+            <option value="44">Technological specialization diploma holders</option>
+            <option value="51">Change of institution/course</option>
+            <option value="53">Short cycle diploma holders</option>
+            <option value="57">Change of institution/course (International)</option>
+        </select>
+        <br><br>
+
+        <label for="courses">Select a Course:</label>
+        <select id="courses" name="courses" required>
+            <option value="None" selected disabled hidden>--Select a Course--</option>
+            <option value="33">Biofuel Production Technologies</option>
+            <option value="171">Animation and Multimedia Design</option>
+            <option value="8014">Social Service (evening attendance)</option>
+            <option value="9003">Agronomy</option>
+            <option value="9070">Communication Design</option>
+            <option value="9085">Veterinary Nursing</option>
+            <option value="9119">Informatics Engineering</option>
+            <option value="9130">Equinculture</option>
+            <option value="9147">Management</option>
+            <option value="9238">Social Service</option>
+            <option value="9254">Tourism</option>
+            <option value="9500">Nursing</option>
+            <option value="9556">Oral Hygiene</option>
+            <option value="9670">Advertising and Marketing Management</option>
+            <option value="9773">Journalism and Communication</option>
+            <option value="9853">Basic Education</option>
+            <option value="9991">Management (evening attendance)</option>
+        </select>
+
+        <br><br>
+
+        <label for="previousQualification">Select Previous Qualification:</label>
+        <select id="previousQualification" name="previousQualification" required>
+            <option value="None" selected disabled hidden>--Select Previous Qualification--</option>
+            <option value="1">Secondary education</option>
+            <option value="2">Higher education - bachelor's degree</option>
+            <option value="3">Higher education - degree</option>
+            <option value="4">Higher education - master's</option>
+            <option value="5">Higher education - doctorate</option>
+            <option value="6">Frequency of higher education</option>
+            <option value="9">12th year of schooling - not completed</option>
+            <option value="10">11th year of schooling - not completed</option>
+            <option value="12">Other</option>
+
+        </select>
+
+        <br><br>
+
+        <label for="debtorStatus">Debtor Status:</label>
+        <select id="debtorStatus" name="debtorStatus" required>
+            <option value="None" selected disabled hidden>--Debtor Status--</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <br><br>
+
+        <label for="tuition_fees">Tuition Fees Up to Date:</label>
+        <select id="tuition_fees" name="tuition_fees" required>
+            <option value="None" selected disabled hidden>--Tution Fees Up to Date--</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <br><br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="None" selected disabled hidden>--Gender--</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+
+        <br><br>
+        <label for="scholarship">Scholarship Holder:</label>
+        <select id="scholarship" name="scholarship" required>
+            <option value="None" selected disabled hidden>--Scholarship Holder--</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <br><br>
+
+        <label for="displaced">Displaced:</label>
+        <select id="displaced" name="displaced" required>
+            <option value="None" selected disabled hidden>--Displayed--</option>
+
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <br><br>
+
+
+        <label for="age_at_enrollment">Age at Enrollment:</label>
+        <input required type="number" id="age_at_enrollment" name="age_at_enrollment" min="0"
+            placeholder="Enter age at enrollment" fdprocessedid="mavwy">
+
+        <br><br>
+
+        <label for="enrolled_units_1st_year">Curricular Units 1st Year (Enrolled):</label>
+        <input required type="number" id="enrolled_units_1st_year" name="enrolled_units_1st_year" min="0"
+            placeholder="Enter enrolled units in 1st year">
+
+        <br><br>
+
+        <label for="approved_units_1st_year">Curricular Units 1st Year (Approved):</label>
+        <input required type="number" id="approved_units_1st_year" name="approved_units_1st_year" min="0"
+            placeholder="Enter approved units in 1st year">
+
+        <br><br>
+
+        <label for="enrolled_units_2nd_year">Curricular Units 2nd Year (Enrolled):</label>
+        <input required type="number" id="enrolled_units_2nd_year" name="enrolled_units_2nd_year" min="0"
+            placeholder="Enter enrolled units in 2nd year">
+
+        <br><br>
+
+        <label for="approved_units_2nd_year">Curricular Units 2nd Year (Approved):</label>
+        <input required type="number" id="approved_units_2nd_year" name="approved_units_2nd_year" min="0"
+            placeholder="Enter approved units in 2nd year">
+
+        <br><br>
+
+        <label for="enrolled_units_3rd_year">Curricular Units 3rd Year (Enrolled):</label>
+        <input required type="number" id="enrolled_units_3rd_year" name="enrolled_units_3rd_year" min="0"
+            placeholder="Enter enrolled units in 3rd year">
+
+        <br><br>
+
+        <label for="approved_units_3rd_year">Curricular Units 3rd Year (Approved):</label>
+        <input required type="number" id="approved_units_3rd_year" name="approved_units_3rd_year" min="0"
+            placeholder="Enter approved units in 3rd year">
+
+        <br><br>
+
+
+        <label for="enrolled_units_4th_year">Curricular Units 4th Year (Enrolled):</label>
+        <input required type="number" id="enrolled_units_4th_year" name="enrolled_units_4th_year" min="0"
+            placeholder="Enter enrolled units in 4th year">
+
+        <br><br>
+
+        <label for="approved_units_4th_year">Curricular Units 4th Year (Approved):</label>
+        <input required type="number" id="approved_units_4th_year" name="approved_units_4th_year" min="0"
+            placeholder="Enter approved units in 4th year">
+
+
+
+        <br><br><br>
+        <input type="submit" value="predict" class="btn d-block m-auto">
+    </form>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

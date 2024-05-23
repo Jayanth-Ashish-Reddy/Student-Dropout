@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Result</title>
+    <style>
+        /* Apply styles to the PREDICTION title */
+        h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            /* color:rgb(46, 35, 35) */
+        }
+
+        /* Apply styles to the output text */
+        #outputText {
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        body {
+            /* background-color: rgb(196, 219, 230); */
+            background-image: url('https://static.vecteezy.com/system/resources/previews/002/496/737/original/happy-college-student-character-free-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* This property ensures the background remains fixed */
+            height: 100vh;
+        }
+
+        div {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #efe9e9;
+            ;
+            /* Change the background color if needed */
+            border-radius: 5px;
+            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>PREDICTION:</h1>
+
+        <!-- The text inside this span will change color based on the JavaScript code -->
+        <h1><span id="outputText">{{output}}</span></h1>
+    </div>
+    <br><br>
+
+    <script>
+        // JavaScript to dynamically change text color based on content
+        const outputText = document.getElementById('outputText');
+
+        // Access the content inside the span and apply different colors based on the text
+        switch (outputText.innerHTML) {
+            case 'At the stage to dropout':
+                outputText.style.color = 'red';
+                break;
+
+
+            default:
+                outputText.style.color = 'green'; // Default color if no specific match
+                break;
+        }
+    </script>
+</body>
+
+</html>
